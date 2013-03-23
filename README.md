@@ -3,7 +3,7 @@ zf2Image
 
 Allows you to use presets (image styles) for image processing.
 
-Use
+##Use
 
 First you need setup some preset in config, and then use it using preset_name in view script:
 
