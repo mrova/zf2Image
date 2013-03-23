@@ -7,17 +7,17 @@ Use
 
 First you need setup some preset in config, and then use it using preset_name in view script:
 
-------
+
+
+```php
 
 <?php echo $this->zf2Image('/files/images/noavatar.gif', 'thumb'); ?>
 
-------
-
-
-
+```
 
 Or you can use exists presets:
 
+```php
   'image_styles' => array(
         '48x48' => array(
             'scaleAndCrop' => array(
@@ -103,10 +103,7 @@ Or you can use exists presets:
 
     ),
 
-
-
-
-
+```
 
 
 You can see presets examples in config of this module in config/congig.php.
