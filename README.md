@@ -1,7 +1,7 @@
 zf2Image
 ========
 
-zf2Image
+Allows you to use presets (image styles) for image processing.
 
 Use
 
