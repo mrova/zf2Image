@@ -3,7 +3,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Image\Controller\Image' => 'Image\Controller\ImageController',
+            'zf2Image\Controller\Image' => 'zf2Image\Controller\zf2ImageController',
         ),
     ),
 //     'controller_plugins' => array(
@@ -15,16 +15,16 @@ return array(
     // The following section is new and should be added to your file
     'router' => array(
         'routes' => array(
-            'image' => array(
+            'zf2image' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/image[/:action][/:id]',
+                    'route'    => '/zf2image[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Image\Controller\Image',
+                        'controller' => 'zf2Image\Controller\Image',
                         'action'     => 'index',
                     ),
                 ),
@@ -34,16 +34,15 @@ return array(
 
     'view_manager' => array(
         'template_path_stack' => array(
-            'image' => __DIR__ . '/../view',
+            'zf2image' => __DIR__ . '/../view',
         ),
     ),
 
     'navigation' => array(
         'default' => array(
             array(
-                'label' => 'Image Test',
-                'route' => 'image',
-                'order' => 5,
+                'label' => 'zf2Image Test',
+                'route' => 'zf2image',
             ),
         ),
     ),

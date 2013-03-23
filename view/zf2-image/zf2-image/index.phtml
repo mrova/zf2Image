@@ -1,0 +1,60 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'zf2Image module';
+$this->headTitle($title);
+?>
+
+
+
+<div>
+    <H3>Rounded</H3>
+    <?php echo $this->zf2Image($imagepath, 'rounded'); ?>
+    <?php echo $this->zf2Image($imagepath2, 'rounded'); ?>
+    <?php //echo $imagepath2; ?>
+</div>
+
+
+
+<div>
+    <H3>Thumb</H3>
+    <?php echo $this->zf2Image($imagepath2, 'thumb'); ?>
+</div>
+
+<div>
+    <H3>Different corners</H3>
+    <?php echo $this->zf2Image($imagepath, 'difrounded'); ?>
+    <?php echo $this->zf2Image($imagepath2, 'difrounded'); ?>
+</div>
+
+<div>
+    <H3>Croped And Grayscale</H3>
+    <?php echo $this->zf2Image($imagepath, 'croped'); ?>
+</div>
+
+
+<div>
+    <H3>Medium</H3>
+    <?php echo $this->zf2Image($imagepath, 'medium'); ?>
+</div>
+
+
+<!--
+<div>
+    <H3>Medium</H3>
+    <?php //echo $this->zf2Image($imagepath, 'medium'); ?>
+</div>
+
+<div>
+    <H3>Medscale</H3>
+    <?php //echo $this->zf2Image($imagepath, 'medscale'); ?>
+</div>
+<div>
+    <H3>Medupscale</H3>
+    <?php //echo $this->zf2Image($imagepath, 'medupscale'); ?>
+</div>
+
+-->
+
+
+

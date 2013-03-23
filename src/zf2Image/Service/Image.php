@@ -1,6 +1,6 @@
 <?php
 
-namespace Image\Service;
+namespace zf2Image\Service;
 
 
 class Image {

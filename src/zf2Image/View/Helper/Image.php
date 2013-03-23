@@ -1,5 +1,5 @@
 <?php
-namespace Image\View\Helper;
+namespace zf2Image\View\Helper;
 
 
 use Zend\View\Helper\AbstractHelper;

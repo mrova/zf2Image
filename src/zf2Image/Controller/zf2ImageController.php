@@ -1,6 +1,6 @@
 <?php
-// module/User/src/User/Controller/UserController.php:
-namespace Image\Controller;
+// $
+namespace zf2Image\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -8,12 +8,9 @@ use Zend\View\Model\ViewModel;
 
 
 
-/**
- *
- * @author konstantin
- *
- */
-class ImageController extends AbstractActionController
+
+
+class zf2ImageController extends AbstractActionController
 {
 
     public function indexAction()
