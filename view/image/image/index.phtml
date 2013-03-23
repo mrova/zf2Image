@@ -1,0 +1,61 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Image module';
+$this->headTitle($title);
+?>
+
+
+
+<div>
+    <H3>Rounded</H3>
+    <?php echo $this->Image($imagepath, 'rounded'); ?>
+    <?php echo $this->Image($imagepath2, 'rounded'); ?>
+    <?php //echo $imagepath2; ?>
+    <?php echo $this->Image('/files/images/noavatar.gif', '48x48'); ?>
+</div>
+
+
+
+<div>
+    <H3>Thumb</H3>
+    <?php echo $this->Image($imagepath2, 'thumb'); ?>
+</div>
+
+<div>
+    <H3>Different corners</H3>
+    <?php echo $this->Image($imagepath, 'difrounded'); ?>
+    <?php echo $this->Image($imagepath2, 'difrounded'); ?>
+</div>
+
+<div>
+    <H3>Croped And Grayscale</H3>
+    <?php //echo $this->Image($imagepath, 'croped'); ?>
+</div>
+
+
+<div>
+    <H3>Medium</H3>
+    <?php //echo $this->Image($imagepath, 'medium'); ?>
+</div>
+
+
+<!--
+<div>
+    <H3>Medium</H3>
+    <?php //echo $this->Image($imagepath, 'medium'); ?>
+</div>
+
+<div>
+    <H3>Medscale</H3>
+    <?php //echo $this->Image($imagepath, 'medscale'); ?>
+</div>
+<div>
+    <H3>Medupscale</H3>
+    <?php //echo $this->Image($imagepath, 'medupscale'); ?>
+</div>
+
+-->
+
+
+
