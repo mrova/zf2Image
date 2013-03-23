@@ -6,13 +6,7 @@ return array(
             'zf2Image\Controller\Image' => 'zf2Image\Controller\zf2ImageController',
         ),
     ),
-//     'controller_plugins' => array(
-//        'invokables' => array(
-//            'getUser' => 'User\Plugin\GetUser',
-//        ),
-//    ),
-
-    // The following section is new and should be added to your file
+    
     'router' => array(
         'routes' => array(
             'zf2image' => array(

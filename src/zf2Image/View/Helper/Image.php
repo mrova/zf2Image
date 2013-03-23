@@ -4,10 +4,6 @@ namespace zf2Image\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\View\Model\ViewModel;
-//use Zend\Authentication\AuthenticationService;
-
-//use User\Auth\Storage\Storage;
-
 
 class Image extends AbstractHelper
 {
@@ -37,10 +33,8 @@ class Image extends AbstractHelper
         }
 
 
-        // если картинка была уже обработана ранее, то не надо ее опять обрабатывать,
-        // а просто выдать адрес уже обработанной картинки
+        //if this image processed before, return url processed image
         if (!file_exists($image_path)) {
-            //echo 'IMAGE PROCESSED ';
             if ($this->file_check_directory($destination_dir)) {
 
                 $image = $this->getImageService();
@@ -107,18 +101,6 @@ class Image extends AbstractHelper
                 return FALSE;
             }
         }
-
-//        if ((file_directory_path() == $directory || file_directory_temp() == $directory) && !is_file("$directory/.htaccess")) {
-//            $htaccess_lines = "SetHandler Drupal_Security_Do_Not_Remove_See_SA_2006_006\nOptions None\nOptions +FollowSymLinks";
-//            if (($fp = fopen("$directory/.htaccess", 'w')) && fputs($fp, $htaccess_lines)) {
-//                fclose($fp);
-//                chmod($directory . '/.htaccess', 0664);
-//            } else {
-//                $variables = array('%directory' => $directory, '!htaccess' => '<br />' . nl2br(check_plain($htaccess_lines)));
-//                form_set_error($form_item, t("Security warning: Couldn't write .htaccess file. Please create a .htaccess file in your %directory directory which contains the following lines: <code>!htaccess</code>", $variables));
-//                watchdog('security', "Security warning: Couldn't write .htaccess file. Please create a .htaccess file in your %directory directory which contains the following lines: <code>!htaccess</code>", $variables, WATCHDOG_ERROR);
-//            }
-//        }
 
         return TRUE;
     }
