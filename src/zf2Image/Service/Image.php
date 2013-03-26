@@ -200,6 +200,10 @@ class Image {
         return TRUE;
     }
 
+    function format($params){
+        $this->outputFormat = $params['format'];
+    }
+
     //function roundedcorners($image, $action = array()) {
     function roundedcorners($params) {
 

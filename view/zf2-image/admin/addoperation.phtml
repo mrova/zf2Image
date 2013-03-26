@@ -1,0 +1,26 @@
+<?php
+
+
+$title = 'add operation';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+
+
+
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('adminzf2imageaddoperation',
+        array('operation' => $operation, 'style_name' => $style_name)));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+<?php echo $this->formCollection($form); ?>
+
+
+<?php echo $this->form()->closeTag(); ?>

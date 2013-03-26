@@ -4,9 +4,10 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'zf2Image\Controller\Image' => 'zf2Image\Controller\zf2ImageController',
+            'zf2Image\Controller\Admin' => 'zf2Image\Controller\AdminController',
         ),
     ),
-    
+
     'router' => array(
         'routes' => array(
             'zf2image' => array(
@@ -20,6 +21,48 @@ return array(
                     'defaults' => array(
                         'controller' => 'zf2Image\Controller\Image',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'adminzf2image' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/admin/zf2image[/:action][/:style_name]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_]*',
+                        'style_name'     => '[a-zA-Z][a-zA-Z0-9]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'zf2Image\Controller\Admin',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'adminzf2imageaddoperation' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/admin/zf2image/edit/:style_name/add/:operation',
+                    'constraints' => array(
+                        'operation'      => '[a-zA-Z][a-zA-Z0-9_]*',
+                        'style_name'     => '[a-zA-Z0-9]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'zf2Image\Controller\Admin',
+                        'action'     => 'addoperation',
+                    ),
+                ),
+            ),
+            'adminzf2imageeditoperation' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/admin/zf2image/edit/:style_name/operation/:id',
+                    'constraints' => array(
+                        'id'             => '[0-9]*',
+                        'style_name'     => '[a-zA-Z0-9]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'zf2Image\Controller\Admin',
+                        'action'     => 'editoperation',
                     ),
                 ),
             ),
@@ -39,91 +82,21 @@ return array(
                 'route' => 'zf2image',
             ),
         ),
+        'admin' => array(
+            array(
+                'label' => 'zf2Image Settings',
+                'route' => 'adminzf2image',
+            ),
+        ),
     ),
 
-    'image_styles' => array(
-        '48x48' => array(
-            'scaleAndCrop' => array(
-                'width' => 48,
-                'height' => 48,
-            ),
-        ),
-        'thumb' => array(
-            'scaleAndCrop' => array(
-                'width' => 150,
-                'height' => 150,
-            ),
-        ),
-        'medium' => array(
-            'scaleAndCrop' => array(
-                'width' => 400,
-                'height' => 400,
-            ),
-        ),
-        'medscale' => array(
-            'scale' => array(
-                'width' => 400,
-                'height' => 400,
-                'upscale' => false,
-            ),
-        ),
-        'medupscale' => array(
-            'scale' => array(
-                'width' => 400,
-                'height' => 400,
-                'upscale' => true,
-            ),
-        ),
-        'croped' => array(
-            'crop' => array(
-                'width' => 150,
-                'height' => 150,
-                'x' => 600,
-                'y' => 400,
-            ),
-            'desturate' => array(),
-        ),
-        'rounded' => array(
-            'format' => 'png',
-            'scaleAndCrop' => array(
-                'width' => 160,
-                'height' => 160,
-                'upscale' => false,
-            ),
-            'roundedcorners' => array(
-                'radius' => 80,
-                'independent_corners_set' => array(
-                    'independent_corners' => false,
-                    'radii' => array(
-                        'tl' => 20,
-                        'tr' => 10,
-                        'bl' => 50,
-                        'br' => 100,
-                    ),
-                ),
-            ),
-        ),
-        'difrounded' => array(
-            'format' => 'png',
-            'scaleAndCrop' => array(
-                'width' => 400,
-                'height' => 400,
-                'upscale' => false,
-            ),
-            'roundedcorners' => array(
-                'radius' => 80,
-                'independent_corners_set' => array(
-                    'independent_corners' => true,
-                    'radii' => array(
-                        'tl' => 20,
-                        'tr' => 10,
-                        'bl' => 50,
-                        'br' => 100,
-                    ),
-                ),
-            ),
-        ),
-
+    'zf2image_operations' => array(
+        'scaleandcrop' => 'Scale and crop',
+        'scale' => 'Scale',
+        'crop' => 'Crop',
+        'format' => 'Format',
+        'desturate' => 'Grayscale',
+        'roundedcorners' => 'Rounded corners',
     ),
 
 );

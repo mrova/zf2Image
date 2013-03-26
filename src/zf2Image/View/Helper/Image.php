@@ -12,10 +12,12 @@ class Image extends AbstractHelper
 
     protected $imageService;
 
-    public function __invoke($filename, $style_name) {
+    public function __invoke($filename, $style_name, $refresh = false) {
 
         $config = $this->sm->get('config');
         $presets = $config['image_styles'][$style_name];
+
+        unset($presets['name']);
 
         $basename = basename($filename);
         $directory = dirname($filename);
@@ -25,16 +27,25 @@ class Image extends AbstractHelper
         $destination_dir = $image_styles_dir . '/' . $style_name;
         $destination = $this->file_create_filename($destination_dir, $basename, $destination_arr, true);
         $destination_dir = $destination_arr['directory'];
-        if (isset($presets['format'])) {
-            $image_path = $destination_arr['directory'] . '/' . $destination_arr['name'] . '.' . $presets['format'];
-            unset($presets['format']);
+
+        $ext = false;
+        foreach ($presets as $operation) {
+            if($operation['operation'] == 'format'){
+                $ext = $operation['options']['format'];
+            }
+        }
+
+        //if (isset($presets['format'])) {
+        if ($ext) {
+            $image_path = $destination_arr['directory'] . '/' . $destination_arr['name'] . '.' . $ext;
+            //unset($presets['format']);
         } else {
             $image_path = $destination_arr['directory'] . '/' . $destination_arr['name'] . $destination_arr['ext'];
         }
 
 
         //if this image processed before, return url processed image
-        if (!file_exists($image_path)) {
+        if (!file_exists($image_path) || $refresh) {
             if ($this->file_check_directory($destination_dir)) {
 
                 $image = $this->getImageService();
@@ -44,8 +55,11 @@ class Image extends AbstractHelper
                 $image->createImage($source);
 
                 //parse Image presets And run image processing
-                foreach ($presets as $operation => $params) {
-                    $image->$operation($params);
+                foreach ($presets as $operation) {
+                    if(!isset($operation['options'])){
+                        $operation['options'] = array();
+                    }
+                    $image->$operation['operation']($operation['options']);
                 }
 
                 //Save image file

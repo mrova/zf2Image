@@ -1,0 +1,39 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Image Styles';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p><a href="<?php echo $this->url('adminzf2image', array(
+        'action'=>'add'));?>">Add image style</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Style name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <?php foreach ($image_styles as $row) : ?>
+            <tr>
+                <td><?php echo $row['name']; ?></td>
+                <td><a href="<?php echo $this->url('adminzf2image', array(
+                    'action' => 'edit', 'style_name' => $row['name']));?>">Edit</a></td>
+                <td></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+

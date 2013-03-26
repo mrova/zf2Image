@@ -25,7 +25,26 @@ class Module
 
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        //return include __DIR__ . '/config/module.config.php';
+
+
+        $data_config = include __DIR__ . '/config/module.config.php';
+        $config = new \Zend\Config\Config($data_config, true);
+
+        if(\file_exists('data/zf2imagestyles.ini')){
+            $reader = new \Zend\Config\Reader\Ini();
+            $data   = $reader->fromFile('data/zf2imagestyles.ini');
+            $config2 = new \Zend\Config\Config($data, true);
+            $config->merge($config2);
+        }
+        else{
+            $data_config = include __DIR__ . '/config/image_styles.config.php';
+            $config2 = new \Zend\Config\Config($data_config, true);
+            $config->merge($config2);
+        }
+
+        return $config;
+
     }
 
 

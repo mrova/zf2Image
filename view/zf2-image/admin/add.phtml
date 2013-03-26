@@ -1,0 +1,31 @@
+<?php
+
+
+$title = 'Add Image Style';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('adminzf2image', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formHidden($form->get('id'));
+
+echo $this->formRow($form->get('name'));
+
+?>
+
+<div class="description">
+    Enter style name. For example: style_name. It'll be used in next code example:
+    <div class="code">echo $this->zf2Image('/files/images/noavatar.gif', 'style_name'); </div>
+</div>
+
+<?php
+
+
+echo $this->formSubmit($form->get('submit'));
+
+echo $this->form()->closeTag();
